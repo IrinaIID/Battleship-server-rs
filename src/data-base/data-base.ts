@@ -1,3 +1,4 @@
+import { WebSocket } from "ws";
 import { handleCreateRoom } from "../server-socket/modules-handle/handle-create-room.js";
 import { handleReg } from "../server-socket/modules-handle/handle-reg.js";
 import { handleUpdateRoom } from "../server-socket/modules-handle/handle-update-room.js";
@@ -39,8 +40,8 @@ export class DataBase {
     return handleUpdateRoom(this.rooms);
   }
 
-  createRoom(connectionId: number) {
-    return handleCreateRoom(connectionId, this.rooms);
+  createRoom(connectionId: number, name: string, ws: WebSocket) {
+    handleCreateRoom(connectionId, this.rooms, name, ws);
   }
 }
 

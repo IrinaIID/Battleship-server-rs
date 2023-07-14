@@ -1,4 +1,4 @@
-import { Socket } from "dgram"
+import WebSocket from "ws";
 
 export interface User {
   name: string,
@@ -14,7 +14,7 @@ export interface Room {
 export interface UserInRoom {
   name: string,
   index: number,
-  socket: Socket
+  socket: WebSocket;
 }
 
 export interface Winner {
