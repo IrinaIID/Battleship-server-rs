@@ -1,21 +1,21 @@
 import { DataUser, RegData } from "../../utils/interfaces";
 
-export function handleReg(data: RegData, users: DataUser[]) {
-  console.log(data);
+export function handleReg(data: RegData, users: DataUser[], usersWaitList: DataUser[]) {
   const index = users.findIndex((user: DataUser) => user.name === data.name);
 
   if (index < 0) {
     const newUser: DataUser = {
       name: data.name,
       password: data.password,
-      id: 0
+      id: Math.random()
     }
     users.push(newUser);
+    usersWaitList.push(newUser);
     return JSON.stringify({
       type: "reg",
       data: JSON.stringify({
         name: data.name,
-        index: 0,
+        index: newUser.id,
         error: false,
         errorText: ''
       }),
@@ -27,7 +27,7 @@ export function handleReg(data: RegData, users: DataUser[]) {
       type: "reg",
       data: JSON.stringify({
         name: data.name,
-        index: index,
+        index: users[index].id,
         error: false,
         errorText: ''
       }),
@@ -38,12 +38,11 @@ export function handleReg(data: RegData, users: DataUser[]) {
       type: "reg",
       data: JSON.stringify({
         name: data.name,
-        index: index,
+        index: users[index].id,
         error: true,
         errorText: 'incorrect password'
       }),
       id: 0
     });
   }
-
 }
