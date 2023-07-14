@@ -1,16 +1,15 @@
-import { DataUser, RegData } from "../../utils/interfaces";
+import { User, RegData } from "../../utils/interfaces";
 
-export function handleReg(data: RegData, users: DataUser[], usersWaitList: DataUser[]) {
-  const index = users.findIndex((user: DataUser) => user.name === data.name);
+export function handleReg(data: RegData, users: User[]) {
+  const index = users.findIndex((user: User) => user.name === data.name);
 
   if (index < 0) {
-    const newUser: DataUser = {
+    const newUser: User = {
       name: data.name,
       password: data.password,
       id: Math.random()
     }
     users.push(newUser);
-    usersWaitList.push(newUser);
     return JSON.stringify({
       type: "reg",
       data: JSON.stringify({
