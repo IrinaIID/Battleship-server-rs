@@ -45,15 +45,14 @@ export function startServer() {
           console.log('send to front');
           ws.send(db.updateRooms());
           console.log(db.updateRooms())
-          // console.log(dataRooms.updateRoom(dataUsers.getUsersWait()))
-          // ws.send(dataRooms.updateRoom(dataUsers.getUsersWait()));
-
-          // dataRooms.createRoom(dataUsers.getUsersWait());
-          // ws.send(dataRooms.updateRoom(dataUsers.getUsersWait()));
           break;
+
         case 'add_user_to_room':
           dataFromFront = JSON.parse(JSON.parse(data).data);
+          const indexRoom = dataFromFront.indexRoom;
+          db.addUserToRoom(indexRoom, name, connectionId, ws)
           console.log(dataFromFront)
+
         default:
           console.warn(`Type: ${type} unknown`);
           break;

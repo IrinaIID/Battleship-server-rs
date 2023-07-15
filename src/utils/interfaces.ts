@@ -22,6 +22,20 @@ export interface Winner {
   wins: number
 }
 
+export interface Game {
+  idGame: number,
+  playersInGame: PlayerInGame[]
+}
+
+export interface PlayerInGame {
+  name: string,
+  idPlayerInGame: number,
+  socket: WebSocket,
+  isTurn: boolean,
+  shipsDot: [],
+  ships: []
+}
+
 // export interface DataUser {
 //   name: string,
 //   password: string,
