@@ -34,10 +34,6 @@ export function startServer() {
           console.log(resReg)
           console.log(db.updateWinners())
           console.log(db.updateRooms())
-          // ws.send(dataRooms.updateRoom(dataUsers.getUsersWait()));
-          // console.log('send to front')
-          // console.log(dataUsers.updateWinners())
-          // ws.send(dataUsers.updateWinners())
           break;
 
         case 'create_room':
@@ -50,8 +46,14 @@ export function startServer() {
         case 'add_user_to_room':
           dataFromFront = JSON.parse(JSON.parse(data).data);
           const indexRoom = dataFromFront.indexRoom;
-          db.addUserToRoom(indexRoom, name, connectionId, ws)
+          db.addUserToRoom(indexRoom, name, connectionId, ws);
+          break;
+
+        case 'add_ships':
+          dataFromFront = JSON.parse(JSON.parse(data).data);
+          db.addShips(dataFromFront)
           console.log(dataFromFront)
+          break;
 
         default:
           console.warn(`Type: ${type} unknown`);

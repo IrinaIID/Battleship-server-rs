@@ -32,8 +32,8 @@ export interface PlayerInGame {
   idPlayerInGame: number,
   socket: WebSocket,
   isTurn: boolean,
-  shipsDot: [],
-  ships: []
+  shipsDot: OneShip[],
+  ships: ShipsData[]
 }
 
 // export interface DataUser {
@@ -45,6 +45,31 @@ export interface PlayerInGame {
 export interface RegData {
   name: string,
   password: string
+}
+
+export interface AddShipsData {
+  gameId: number,
+  ships: ShipsData[]
+  indexPlayer: number,
+}
+
+export interface ShipsData {
+  position: {
+    x: number,
+    y: number
+  },
+  direction: boolean,
+  length: number,
+  type: "small"|"medium"|"large"|"huge"
+}
+
+export interface OneShip {
+  [index: number]: ShipsDotData
+}
+
+export interface ShipsDotData {
+  x: number,
+  y: number
 }
 
 // export interface UserInRoom {

@@ -10,6 +10,8 @@ export function handleAddUserInRoom(indexRoom: number, rooms: Room[], name: stri
   const idOne = Math.random();
   const idTwo = Math.random();
 
+  if (room[0].roomUsers[0].name === name) { return }
+
   players.push({
     name: room[0].roomUsers[0].name,
     idPlayerInGame: idOne,
@@ -50,6 +52,6 @@ export function handleAddUserInRoom(indexRoom: number, rooms: Room[], name: stri
     id: 0
   }));
 
-
+  console.log(games)
   rooms.splice(roomIndexOf, 1);
 }

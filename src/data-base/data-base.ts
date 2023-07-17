@@ -1,10 +1,11 @@
 import { WebSocket } from "ws";
+import { handleAddShips } from "../server-socket/modules-handle/handle-add-ships.js";
 import { handleAddUserInRoom } from "../server-socket/modules-handle/handle-add-user-to-room.js";
 import { handleCreateRoom } from "../server-socket/modules-handle/handle-create-room.js";
 import { handleReg } from "../server-socket/modules-handle/handle-reg.js";
 import { handleUpdateRoom } from "../server-socket/modules-handle/handle-update-room.js";
 import { handleUpdateWinners } from "../server-socket/modules-handle/handle-update-winners.js";
-import { User, Room, Winner, RegData, Game } from "../utils/interfaces";
+import { User, Room, Winner, RegData, Game, AddShipsData } from "../utils/interfaces";
 
 
 export class DataBase {
@@ -50,4 +51,9 @@ export class DataBase {
   addUserToRoom(indexRoom: number, name: string, connectionId: number, ws: WebSocket) {
     handleAddUserInRoom(indexRoom, this.rooms, name, connectionId, ws, this.games);
   }
+
+  addShips(data: AddShipsData) {
+    handleAddShips(data, this.games)
+  }
+
 }
