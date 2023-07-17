@@ -52,6 +52,5 @@ export function handleAddUserInRoom(indexRoom: number, rooms: Room[], name: stri
     id: 0
   }));
 
-  console.log(games)
   rooms.splice(roomIndexOf, 1);
 }

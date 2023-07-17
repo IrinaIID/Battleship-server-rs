@@ -27,9 +27,6 @@ export function handleAddShips(data: AddShipsData, games: Game[]) {
     arrShipsDot.push(oneShip);
   });
 
-  console.log('sssssssssships Doooot')
-  console.log(arrShipsDot)
-
   if (games[indexGame].playersInGame[0].idPlayerInGame === data.indexPlayer) {
     games[indexGame].playersInGame[0].ships = data.ships;
     games[indexGame].playersInGame[0].shipsDot = arrShipsDot;
@@ -72,17 +69,3 @@ export function handleAddShips(data: AddShipsData, games: Game[]) {
   }
 
 }
-
-// interface Game {
-//   idGame: number,
-//   playersInGame: PlayerInGame[]
-// }
-
-// interface PlayerInGame {
-//   name: string,
-//   idPlayerInGame: number,
-//   socket: WebSocket,
-//   isTurn: boolean,
-//   shipsDot: [],
-//   ships: []
-// }

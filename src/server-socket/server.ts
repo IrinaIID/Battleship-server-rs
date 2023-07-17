@@ -16,7 +16,6 @@ export function startServer() {
 
       const type = JSON.parse(data).type;
       let dataFromFront;
-      console.log('<---- front')
 
       switch (type) {
 
@@ -29,18 +28,11 @@ export function startServer() {
           }
           ws.send(db.updateWinners());
           ws.send(db.updateRooms());
-          console.log('--------> front')
-          console.log(name)
-          console.log(resReg)
-          console.log(db.updateWinners())
-          console.log(db.updateRooms())
           break;
 
         case 'create_room':
           db.createRoom(connectionId, name, ws);
-          console.log('send to front');
           ws.send(db.updateRooms());
-          console.log(db.updateRooms())
           break;
 
         case 'add_user_to_room':
@@ -52,13 +44,11 @@ export function startServer() {
         case 'add_ships':
           dataFromFront = JSON.parse(JSON.parse(data).data);
           db.addShips(dataFromFront)
-          console.log(dataFromFront)
           break;
 
         case 'attack':
           dataFromFront = JSON.parse(JSON.parse(data).data);
           db.addShips(dataFromFront)
-          console.log(dataFromFront)
           break;
 
         default:

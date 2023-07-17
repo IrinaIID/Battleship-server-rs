@@ -2,8 +2,6 @@ import { WebSocket } from "ws";
 import { Room } from "../../utils/interfaces";
 
 export function handleCreateRoom(connectionId: number, rooms: Room[], name: string, ws: WebSocket) {
-  console.log('00000000000000');
-  console.log(rooms)
   let isNeedCreate = true;
 
   rooms.forEach(room => {
