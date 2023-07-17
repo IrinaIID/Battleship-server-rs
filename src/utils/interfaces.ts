@@ -36,12 +36,6 @@ export interface PlayerInGame {
   ships: ShipsData[]
 }
 
-// export interface DataUser {
-//   name: string,
-//   password: string,
-//   id: number
-// }
-
 export interface RegData {
   name: string,
   password: string
@@ -72,12 +66,9 @@ export interface ShipsDotData {
   y: number
 }
 
-// export interface UserInRoom {
-//   name: string,
-//   index: number
-// }
-
-// export interface DataRoom {
-//   roomId: number,
-//   roomUsers: UserInRoom[],
-// }
+export interface AttackData {
+  gameId: number,
+  x: number,
+  y: number,
+  indexPlayer: number,
+}

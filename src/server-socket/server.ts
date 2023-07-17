@@ -55,6 +55,12 @@ export function startServer() {
           console.log(dataFromFront)
           break;
 
+        case 'attack':
+          dataFromFront = JSON.parse(JSON.parse(data).data);
+          db.addShips(dataFromFront)
+          console.log(dataFromFront)
+          break;
+
         default:
           console.warn(`Type: ${type} unknown`);
           break;
